@@ -22,7 +22,7 @@ def add_phone(C, name, phone):
     cur.close()
 def delete_phone(C, name, ID):
     cur = C.cursor()
-    cur.execute(f"DELETE FROM phonelist WHERE name = '{name}' AND ID = '{ID}';")
+    cur.execute(f"DELETE FROM phonelist WHERE name = '{name}' AND 'ID' = '{ID}';")
     cur.close()
 def save_phonelist(C):
     cur = C.cursor()
