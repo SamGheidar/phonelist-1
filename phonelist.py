@@ -33,7 +33,7 @@ def save_phonelist(C):
     cur.close()
 
 while True: ## REPL - Read Execute Program Loop
-    cmd = input("Hello and welcome to the phone list, available commands: \n add - add a phone number \n delete - delete a contact \n list - list all phone numbers \n quit - quit the program \n Command: ").upper()
+    cmd = input("Hello and welcome to the phone list, available commands: \n add - add a phone number \n delete - delete a contact \n list - list all phone numbers \n quit - quit the program \n save - save the program \n Command: ").upper()
     if cmd == "LIST":
         print(read_phonelist(conn))
     elif cmd == "ADD":
@@ -46,5 +46,7 @@ while True: ## REPL - Read Execute Program Loop
     elif cmd == "QUIT":
         save_phonelist(conn)
         exit()
+    elif cmd == "SAVE":
+        save_phonelist(conn)
     else:
         print(f"Unknown command: '{cmd}'")
