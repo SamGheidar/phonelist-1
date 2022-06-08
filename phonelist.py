@@ -20,14 +20,15 @@ def add_phone(C, name, phone):
     cur = C.cursor()
     cur.execute(f"INSERT INTO phonelist VALUES ('{name}', '{phone}', '{address}');")
     cur.close()
-def delete_phone(C, name):
+def delete_phone(C, name, ID):
     cur = C.cursor()
-    cur.execute(f"DELETE FROM phonelist WHERE name = '{name}';")
+    cur.execute(f"DELETE FROM phonelist WHERE name = '{name}' AND ID = '{ID}';")
     cur.close()
 def save_phonelist(C):
     cur = C.cursor()
     try:
         cur.execute("COMMIT;")
+        print("Phonelist saved!")
     except:
         print("No changes!")
     cur.close()
@@ -43,7 +44,8 @@ while True: ## REPL - Read Execute Program Loop
         add_phone(conn, name, phone)
     elif cmd == "DELETE":
         name = input("  Name: ")
-        delete_phone(conn, name)
+        id = input(" ID: ")
+        delete_phone(conn, name, 'ID')
     elif cmd == "QUIT":
         save_phonelist(conn)
         exit()
